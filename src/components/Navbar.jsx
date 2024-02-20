@@ -1,12 +1,16 @@
 'use client'
 import { useAuth } from '@/context/authContext'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const Navbar = () => {
     const [auth] = useAuth()
 
+
     const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer hover:font-semibold"
+
+    const router = useRouter()
     return (
         <div className=' w-full h-[7rem] fixed pt-[1rem] bg-white'>
             <nav className=' flex justify-between items-center h-[5rem] w-[90%] border-2 m-auto  px-5 rounded-xl shadow-lg   bg-white top-0 absolue'>
@@ -16,16 +20,19 @@ const Navbar = () => {
                 </div>
 
                 {/* logo */}
-                <div className="logo font-semibold text-[1.7rem] cursor-pointer">
-                    CodeBuds
+                <div
+                 className="logo font-semibold text-[1.7rem] cursor-pointer">
+                    <Link href={'/'}>
+                        CodeBud
+                    </Link>
                 </div>
 
                 {/* nav items */}
                 <div className="navItems">
                     <ul className=' flex gap-10'>
-                        <li className={navItemStyle}> DSA</li>
-                        <li className={navItemStyle}>WEB DEV</li>
-                        <li className={navItemStyle}>BLOGS</li>
+                       <Link href={'/dsa'}> <li className={navItemStyle}> DSA</li></Link>
+                        <Link href={'/web'}><li className={navItemStyle}>WEB DEV</li></Link>
+                        {/* <li className={navItemStyle}>BLOGS</li> */}
                     </ul>
                 </div>
 
