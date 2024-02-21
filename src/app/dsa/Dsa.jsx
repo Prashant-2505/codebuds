@@ -71,7 +71,7 @@ const { data: patternData, isLoading: isPatternLoading, isError: isPatternError,
                       isPatternLoading ? (
                         <p>Loading...</p>
                       ) : (
-                        <p key={i.pattern} onClick={() => router.push(`/pattern/${topic._id}`)} className="bg-slate-300 px-3 py-4 mb-2 rounded-md cursor-pointer hover:bg-slate-400 duration-250 ease-soft-spring">
+                        <p key={i.pattern} onClick={() => router.push(`/question/${topic._id}/${i._id}`)} className="bg-slate-300 px-3 py-4 mb-2 rounded-md cursor-pointer hover:bg-slate-400 duration-250 ease-soft-spring">
                           {i.pattern}
                         </p>
                       )

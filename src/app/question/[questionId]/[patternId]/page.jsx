@@ -1,15 +1,18 @@
+
 import React from 'react'
-import Question from './Question'
+import Question from '../Question'
 
 export const metadata = {
   title: "Patterns",
   description: "Patterns based on topics",
 };
 
-const page = () => {
+const page = ({ params }) => {
+ 
+
   return (
     <div>
-      <Question/>
+      <Question params={params} />
     </div>
   )
 }

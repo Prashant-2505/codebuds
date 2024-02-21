@@ -1,19 +1,17 @@
 'use client'
 import { useAuth } from '@/context/authContext'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const Navbar = () => {
     const [auth] = useAuth()
 
 
-    const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer hover:font-semibold"
+    const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer "
 
-    const router = useRouter()
     return (
         <div className=' w-full h-[7rem] fixed pt-[1rem] bg-white'>
-            <nav className=' flex justify-between items-center h-[5rem] w-[90%] border-2 m-auto  px-5 rounded-xl shadow-lg   bg-white top-0 absolue'>
+            <nav className=' flex justify-between items-center h-[5rem] w-[90%] border-2 m-auto  px-5 rounded-xl shadow-lg   bg-black text-white top-0 absolue'>
                 {/* mobile btn */}
                 <div className="mobile hidden">
                     <p>X</p>
