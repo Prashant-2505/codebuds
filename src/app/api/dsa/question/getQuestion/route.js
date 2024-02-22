@@ -4,7 +4,6 @@ import { NextResponse } from "next/server"
 
 export async function POST(req) {
     const { topic, pattern } = await req.json()
-    console.log(topic, pattern)
     connectToDb()
     try {
         const question = await QuestionModel.find({ topic, pattern })
