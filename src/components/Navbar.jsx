@@ -10,7 +10,7 @@ const Navbar = () => {
     const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer "
 
     return (
-        <div className=' w-full h-[7rem] fixed pt-[1rem] bg-white'>
+        <div className=' w-full h-[7rem] fixed pt-[1rem] bg-white z-50'>
             <nav className=' flex justify-between items-center h-[5rem] w-[90%] border-2 m-auto  px-5 rounded-xl shadow-lg   bg-black text-white top-0 absolue'>
                 {/* mobile btn */}
                 <div className="mobile hidden">

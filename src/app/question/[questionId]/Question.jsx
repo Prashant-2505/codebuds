@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 
-const Pattern = ({ params }) => {
+const Question = ({ params }) => {
     const topic = params.questionId;
     const pattern = params.patternId;
     const [questions, setQuestions] = useState([]);
@@ -81,4 +81,4 @@ const Pattern = ({ params }) => {
     );
 };
 
-export default Pattern;
+export default Question;
