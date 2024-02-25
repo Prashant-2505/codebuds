@@ -3,6 +3,8 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '@/context/authContext';
+import { app } from '../../firebase'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
     const formInputStyle = 'w-[80%] h-[3rem] p-4 rounded-md outline-none';
@@ -12,31 +14,65 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // Destructure 'setAuth' from 'useAuth'
-    const [auth, setAuth] = useAuth();
+    const [userAuth, setUserAuth] = useAuth();
 
-    // Corrected the onClick handler to call 'handleForm' function
+
+    // firebase
+    const auth = getAuth(app)
+
+    
+    // const handleForm = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         const { data } = await axios.post('/api/auth/login', { email, password }, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         });
+    //         if (data.success) {
+    //             alert(data.message);
+    //             setUserAuth({
+    //                 ...userAuth,
+    //                 user: data.user,
+    //                 token: data.token
+    //             });
+    //             localStorage.setItem('userAuth', JSON.stringify({ user: data.user, token: data.token }));
+    //             router.push('/');
+    //         } else {
+    //             alert(data.message);
+    //         }
+    //     } catch (error) {
+    //         console.error('Login error:', error);
+    //     }
+    // };
+
     const handleForm = async (e) => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post('/api/auth/login', { email, password }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (data.success) {
-                alert(data.message);
-                setAuth({
-                    ...auth,
-                    user: data.user,
-                    token: data.token
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert("login succesfull")
+
+                    setUserAuth({
+                        ...userAuth,
+                        user: { name: user.displayName, email: user.email },
+                       
+                    });
+                    localStorage.setItem('userAuth', JSON.stringify({
+                        user: { name: user.displayName, email: user.email },
+                       
+                    }));
+                    router.push('/');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage)
                 });
-                localStorage.setItem('auth', JSON.stringify({ user: data.user, token: data.token }));
-                router.push('/');
-            } else {
-                alert(data.message);
-            }
+
         } catch (error) {
             console.error('Login error:', error);
         }

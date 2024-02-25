@@ -8,13 +8,19 @@ import Image from "next/image";
 import { AiOutlineLike } from "react-icons/ai";
 
 import amazon from '../../public/images/amazon.png'
+import { Button } from "@nextui-org/react";
+
 
 
 export default function Home() {
+
+
   const router = useRouter();
 
   return (
     <main className="pt-[10rem] w-full h-full p-8">
+
+
       <h1>
         Welcome to <span className="font-semibold">CodeBud</span> - Your Ultimate Resource for DSA Patterns, Web Development, and Insightful Blogs! Explore a curated list of questions designed to enhance your understanding of Data Structures and Algorithms, delve into the latest trends in web development, and stay informed with our thought-provoking blogs. Let the journey towards mastering coding and staying updated on industry insights begin!
       </h1>
@@ -80,36 +86,36 @@ export default function Home() {
         <div className="grid grid-cols-4 gap-[8rem] mt-8">
 
           <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
-          
+
             <Image className="h-[4rem] w-[4rem] "
               src={amazon} />
           </div>
 
           <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
-          
-          <Image className="h-[4rem] w-[4rem] "
-            src={amazon} />
-        </div>
 
-        <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
-          
-          <Image className="h-[4rem] w-[4rem] "
-            src={amazon} />
+            <Image className="h-[4rem] w-[4rem] "
+              src={amazon} />
+          </div>
 
-            
-        </div>
+          <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
 
-        <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
-          
-          <Image className="h-[4rem] w-[4rem] "
-            src={amazon} />
-        </div>
+            <Image className="h-[4rem] w-[4rem] "
+              src={amazon} />
 
-        <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
-          
-          <Image className="h-[4rem] w-[4rem] "
-            src={amazon} />
-        </div>
+
+          </div>
+
+          <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
+
+            <Image className="h-[4rem] w-[4rem] "
+              src={amazon} />
+          </div>
+
+          <div className="flex flex-col-reverse justify-center items-center border-2 p-2 rounded-md group shadow-lg hover:shadow-orange-300 cursor-pointer duration-200 ease-linear bg-white">
+
+            <Image className="h-[4rem] w-[4rem] "
+              src={amazon} />
+          </div>
 
         </div>
       </div>

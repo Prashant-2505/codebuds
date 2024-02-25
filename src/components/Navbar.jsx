@@ -4,7 +4,8 @@ import Link from 'next/link'
 import React from 'react'
 
 const Navbar = () => {
-    const [auth] = useAuth()
+    const [authUser] = useAuth()
+    console.log(authUser)
 
 
     const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer "
@@ -45,9 +46,9 @@ const Navbar = () => {
 
                 {/* auth btns */}
                 <div>
-                    <Link href={auth && auth?.user ? (auth?.user?.role === 'admin' ? '/adminProfile' : '/userProfile') : '/login'}>
+                    <Link href={authUser && authUser.user ? '/userprofile': '/login'}>
                         <p className={navItemStyle}>
-                            {auth && auth?.user ? (auth?.user?.role === 'admin' ? 'Admin' : 'Profile') : 'Login'}
+                            {authUser && authUser.user ? 'Profile' : 'Login'}
                         </p>
                     </Link>
                 </div>

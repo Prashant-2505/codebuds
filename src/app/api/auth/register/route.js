@@ -6,19 +6,11 @@ import UserModel from "@/models/user";
 
 export const dynamic = "force-dynamic";
 
-
-
 export async function POST(req) {
     await connectToDb();
 
-    if (req.method !== 'POST') {
-        return NextResponse.json({
-            success: false,
-            message: "Invalid request method. Use POST.",
-        });
-    }
 
-    const { name, email, password } = await req.json();
+    const { name, email, password, uid } = await req.json();
 
     if (!name || !email || !password) {
         return NextResponse.json({
@@ -38,6 +30,7 @@ export async function POST(req) {
 
             const hashedPassword = await hash(password, 10);
             const newUser = await UserModel.create({
+                uid,
                 name,
                 email,
                 password: hashedPassword,
@@ -49,7 +42,8 @@ export async function POST(req) {
                     message: "Account created successfully.",
                     newUser: {
                         name: newUser.name,
-                        email: newUser.email
+                        email: newUser.email,
+                        uid: newUser.uid
                     }
                 });
             }
