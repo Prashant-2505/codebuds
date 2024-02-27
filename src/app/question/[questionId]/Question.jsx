@@ -1,15 +1,17 @@
 'use client';
 
-import axios from "axios";
-import { useRouter } from "next/navigation";
+import axios from "axios";import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
+import { useAuth } from "@/context/authContext";
 
 const Question = ({ params }) => {
-
     const companyBtnStyle = "bg-green-200 p-2 rounded-md cursor-pointer hover:bg-green-300 shadow-sm hover:shadow-md duration-200 ease-soft-spring"
 
-    const isLoggedIn = false;
+
+
+    const [authUser] = useAuth()
+
     const route = useRouter()
 
     const topic = params.questionId;
@@ -27,7 +29,6 @@ const Question = ({ params }) => {
                 {
                     headers: { 'Accept': 'application/json' }
                 });
-
             if (data.success) {
                 setQuestions(data.question); // Fix here
             }
@@ -85,18 +86,16 @@ const Question = ({ params }) => {
                         <div className=" flex items-center pt-4 gap-3">
                             <h1 className=" font-semibold text-md">Asked in : </h1>
 
-                            {isLoggedIn ?
+                            {authUser?.user ?
                                 <div className=" flex gap-5">
-                                    <button className={companyBtnStyle}>Amazon</button>
-                                    <button className={companyBtnStyle}>Google</button>
-                                    <button className={companyBtnStyle}>Microsoft</button>
-                                    <button className={companyBtnStyle}>Apple</button>
-                                    <button className={companyBtnStyle}>Meta</button>
+                                    {i?.company.map((c) => (
+                                        <button className={companyBtnStyle}>{c}</button>
+                                    ))}
                                 </div>
                                 :
                                 <button
-                                className=" bg-red-500 p-2 rounded-md text-white hover:bg-red-600 duration-200 ease-soft-spring"
-                                onClick={()=>route.push('/login')}
+                                    className=" bg-red-500 p-2 rounded-md text-white hover:bg-red-600 duration-200 ease-soft-spring"
+                                    onClick={() => route.push('/login')}
                                 >Please login to unclock</button>
                             }
                         </div>

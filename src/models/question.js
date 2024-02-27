@@ -23,16 +23,20 @@ try {
         },
         questionDescription: {
             type: String,
-            required: true,
         },
         questionLink: {
             type: String,
             required: true,
         },
-        like:{
-            type:Number,
-            default:0
+        like: {
+            type: Number,
+            default: 0
+        },
+        company: {
+            type: [String],  // Array of strings
+            default: []
         }
+
     }, { timestamps: true });
 
     QuestionModel = mongoose.model("QuestionModel", questionSchema);

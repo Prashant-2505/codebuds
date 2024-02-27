@@ -23,6 +23,8 @@ const AdminProfile = () => {
     const [questionLink, setQuestionLink] = useState("");
     const [questionDescription, setQuestionDescription] = useState("");
 
+    const [company, setCompany] = useState("");
+    const [selectedCompanies, setSelectedCompanies] = useState([]);
 
     // fetched data states
     const [allTopic, setAllTopic] = useState([]);
@@ -109,7 +111,7 @@ const AdminProfile = () => {
     const addQuestion = async (e) => {
         e.preventDefault()
         const { data } = await axios.post('/api/dsa/question/addQuestion',
-            { topic: selectedTopic, pattern: selectedPattern, questionName, questionLink, questionDescription },
+            { topic: selectedTopic, pattern: selectedPattern, questionName, questionLink, questionDescription, company: selectedCompanies, },
             {
                 headers: { 'Content-Type': 'application/json' }
             })
@@ -239,6 +241,24 @@ const AdminProfile = () => {
                                                     onChange={(e) => setQuestionLink(e.target.value)}
                                                     placeholder="Add Question Link"
                                                     type="text" />
+                                                <div>
+                                                    <input
+                                                        className="w-[100%] px-4 py-3 rounded-md outline-none"
+                                                        value={company}
+                                                        onChange={(e) => setCompany(e.target.value)}
+                                                        placeholder="Add Company"
+                                                        type="text"
+                                                    />
+                                                    <Button onClick={() => setSelectedCompanies((prevCompanies) => [...prevCompanies, company])}>
+                                                        Add Company
+                                                    </Button>
+                                                    <div>
+                                                        {selectedCompanies.map((selectedCompany, index) => (
+                                                            <span key={index}>{selectedCompany}, </span>
+                                                        ))}
+                                                    </div>
+
+                                                </div>
                                                 <textarea className="w-full" value={questionDescription}
                                                     onChange={(e) => setQuestionDescription(e.target.value)}
                                                 ></textarea>

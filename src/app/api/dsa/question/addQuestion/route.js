@@ -6,9 +6,9 @@ export async function POST(req) {
     console.log("op");
     connectToDb();
     try {
-        const { topic, pattern, questionName, questionLink, questionDescription } = await req.json();
+        const { topic, pattern, questionName, questionLink, questionDescription,company } = await req.json();
 
-        console.log(topic, pattern, questionName, questionLink, questionDescription);
+        console.log(topic, pattern, questionName, questionLink, questionDescription,company);
 
         const existingQuestion = await QuestionModel.findOne({ questionName });
 
@@ -22,9 +22,11 @@ export async function POST(req) {
         const newQuestion = await QuestionModel.create({
             questionName,
             questionLink,
+            company,
             questionDescription,
             topic,
-            pattern
+            pattern,
+            
         });
 
         if (newQuestion) {
