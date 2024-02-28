@@ -46,7 +46,7 @@ const Navbar = () => {
 
                 {/* auth btns */}
                 <div>
-                    <Link href={authUser && authUser.user ? '/userprofile': '/login'}>
+                    <Link href={authUser && authUser.user ? '/userProfile': '/login'}>
                         <p className={navItemStyle}>
                             {authUser && authUser.user ? 'Profile' : 'Login'}
                         </p>
