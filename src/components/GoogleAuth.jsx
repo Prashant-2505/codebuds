@@ -13,14 +13,11 @@ const GoogleAuth = () => {
     const [userAuth, setUserAuth] = useAuth();
     const router = useRouter();
 
-
-
     async function signInWithGoogle() {
         const provider = new GoogleAuthProvider();
-
         try {
             const result = await signInWithPopup(auth, provider);
-
+    console.log('5')
             const { displayName, email, uid, password } = result.user;
             try {
                 const { data } = await axios.post('/api/auth/googleauth', { uid, email, password, name: displayName }, {

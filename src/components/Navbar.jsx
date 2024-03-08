@@ -5,7 +5,6 @@ import React from 'react'
 
 const Navbar = () => {
     const [authUser] = useAuth()
-    console.log(authUser)
 
 
     const navItemStyle = " border-b-2 border-transparent hover:border-gray-400 duration-150 ease-linear cursor-pointer "

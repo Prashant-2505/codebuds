@@ -71,7 +71,7 @@ const Question = ({ params }) => {
                             <div className="">
                                 <h1 className='font-bold text-2xl mb-3'>{i.questionName}</h1>
                                 <h2 className='font-semibold text-lg mb-2'>{i.questionDescription}</h2>
-                                <a href={"https://leetcode.com/problems/two-sum/"} target="_blank" rel="noopener noreferrer" className=' cursor-pointer'>
+                                <a href={i.questionLink} target="_blank" rel="noopener noreferrer" className=' cursor-pointer'>
                                     Link
                                 </a>
                             </div>
